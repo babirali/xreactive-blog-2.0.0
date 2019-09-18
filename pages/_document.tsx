@@ -1,5 +1,7 @@
 import Document, { Head, Main, NextScript } from "next/document";
 
+// import 'bootstrap/dist/css/bootstrap.min.css';
+
 export default class MyDocument extends Document {
     render() {
         return (
@@ -10,12 +12,8 @@ export default class MyDocument extends Document {
                         name="viewport"
                         content="width=device-width, initial-scale=1"
                     />
-                    <link
-                        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css"
-                        rel="stylesheet"
-                    />
-
-                    <link rel="stylesheet" href="_next/static/style.css" />
+                    <link rel="stylesheet" href="/static/style.css" />
+                    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon.ico"></link>
                 </Head>
                 <body>
                     <Main />
