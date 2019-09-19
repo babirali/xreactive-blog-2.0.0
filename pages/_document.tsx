@@ -12,8 +12,8 @@ export default class MyDocument extends Document {
                         name="viewport"
                         content="width=device-width, initial-scale=1"
                     />
-                    <link rel="stylesheet" href="/static/style.css" />
-                    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon.ico"></link>
+                    <link rel="stylesheet" href="/static/css/style.css" />
+                    <link rel="icon" type="image/png" sizes="16x16" href="/static/img/favicon-icons/favicon.ico"></link>
                 </Head>
                 <body>
                     <Main />

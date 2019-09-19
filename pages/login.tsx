@@ -29,7 +29,7 @@ const Login = (props) => {
     };
     const { inputs, handleChange, handleSubmit, clearForm, formValid, isDirty } = useForm(submit, formData);
     return (
-        <div className="div">
+        <div className="container min-vh-100" style={{ paddingBottom: "30px" }}>
             <form>
                 <div className="form-group">
                     <label htmlFor="email">Email address</label>
