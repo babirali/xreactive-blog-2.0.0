@@ -1,7 +1,9 @@
 const webpack = require("webpack");
 const withCSS = require("@zeit/next-css");
+const withBundleAnalyzer = require("@zeit/next-bundle-analyzer");
 require("dotenv").config();
-module.exports = withCSS({
+
+module.exports = withCSS(withBundleAnalyzer({
     webpack: config => {
         // Fixes npm packages that depend on `fs` module
         config.node = {
@@ -20,5 +22,17 @@ module.exports = withCSS({
         */
         config.plugins.push(new webpack.DefinePlugin(env));
         return config
+    },
+    analyzeServer: ["server", "both"].includes(process.env.BUNDLE_ANALYZE),
+    analyzeBrowser: ["browser", "both"].includes(process.env.BUNDLE_ANALYZE),
+    bundleAnalyzerConfig: {
+        server: {
+            analyzerMode: 'static',
+            reportFilename: '../bundles/server.html'
+        },
+        browser: {
+            analyzerMode: 'static',
+            reportFilename: '../bundles/client.html'
+        }
     }
-});
+}));

@@ -1,23 +1,27 @@
-import React, { useEffect, useState } from 'react'
-import Link from 'next/link'
-import Head from 'next/head'
-import Nav from '../components/nav'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from 'react'
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import Post from '../components/post/post';
-import { spinnerService } from '../services/spinner';
+// import { spinnerService } from '../services/spinner';
 import axios from "axios";
 import Layout from '../components/layout';
+import Head from 'next/head';
 
 const Home = (props) => {
   const [posts, setPosts] = useState(props.posts)
   return (
-    <Layout>
-      {posts.map((post: any, index: number) => {
-        return <Post post={post} key={index} />;
-      }
-      )}
-      {/* <Pagination /> */}
-    </Layout>
+    <div>
+      <Head>
+        <title>XReactive-Tutorials on JavaScript, React, Angular and more</title>
+        <meta name="description" content="Tutorials on JavaScript, React, Angular and more" />
+      </Head>
+      <Layout>
+        {posts.map((post: any, index: number) => {
+          return <Post post={post} key={index} />;
+        }
+        )}
+        {/* <Pagination /> */}
+      </Layout>
+    </div>
   )
 }
 

@@ -41,7 +41,7 @@ const SideBar = () => {
                             <ul className="list-unstyled mb-0">
                                 {categories.map((c, i) =>
                                     <li key={i}>
-                                        <Link  href={`/post/${c.name}`}>{c.name}</Link>
+                                        <Link href="/post/[category]" as={`/post/${c.name}`}><a>{c.name}</a></Link>
                                     </li>
                                 )}
                             </ul>
