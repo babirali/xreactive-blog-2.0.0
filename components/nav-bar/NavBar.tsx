@@ -13,7 +13,7 @@ const NavBar = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
                         <Link href="/"><Nav.Link href="/about" className={`nav-link link-hover ${"/" === "/" ? "link-active" : ""}`}>Blog</Nav.Link></Link>
-                        <Link href="/login"><Nav.Link href="/about">About</Nav.Link></Link>
+                        <Link href="/about"><Nav.Link href="/about">About</Nav.Link></Link>
                         <Link href="/login"><Nav.Link href="/login">Login</Nav.Link></Link>
                     </Nav>
                 </Navbar.Collapse>
