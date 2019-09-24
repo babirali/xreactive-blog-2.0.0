@@ -1,5 +1,6 @@
 
-import { Subject } from "rxjs";
+import Router from 'next/router'
+
 import { toast } from "react-toastify";
 import { spinnerService } from "./spinner";
 import axios from "axios";
@@ -25,7 +26,8 @@ export const authService = {
             localStorage.setItem("token", response.data.user.token);
             authService.isAuthenticated = true;
             spinnerService.showLoading(false);
-            props.history.push("/listpost");
+            // props.history.push("/listpost");
+            Router.push('/admin/listpost')
         }).catch((error: any) => {
             toast.error("Error");
             spinnerService.showLoading(false);

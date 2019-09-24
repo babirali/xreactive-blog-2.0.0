@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { spinnerService } from "../../../services/spinner";
 import useForm from "../../../components/form/useForm";
 import LayoutAdmin from "../../../components/layout-admin";
+import withAuth from "../../../components/withAuth";
 
 const AddPost = (props) => {
     const router = useRouter()
@@ -203,4 +204,4 @@ const AddPost = (props) => {
         </LayoutAdmin>
     );
 };
-export default AddPost;
+export default withAuth(AddPost);

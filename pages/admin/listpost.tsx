@@ -7,6 +7,7 @@ import Link from 'next/link'
 
 import { spinnerService } from "../../services/spinner";
 import LayoutAdmin from "../../components/layout-admin";
+import withAuth from "../../components/withAuth";
 
 class ListPost extends Component<any, any> {
     constructor(props: any) {
@@ -98,4 +99,4 @@ class ListPost extends Component<any, any> {
         );
     }
 }
-export default ListPost;
+export default withAuth(ListPost);

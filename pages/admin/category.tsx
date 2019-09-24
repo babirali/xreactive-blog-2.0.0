@@ -4,6 +4,7 @@ import axios from "axios";
 import { spinnerService } from "../../services/spinner";
 import useForm from "../../components/form/useForm";
 import LayoutAdmin from "../../components/layout-admin";
+import withAuth from "../../components/withAuth";
 
 const Category = () => {
     const [categories, setCategories] = useState([]);
@@ -99,4 +100,4 @@ const Category = () => {
         </LayoutAdmin >
     );
 };
-export default Category;
+export default withAuth(Category);

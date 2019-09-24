@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { spinnerService } from "../../services/spinner";
 import LayoutAdmin from "../../components/layout-admin";
+import withAuth from "../../components/withAuth";
 
 const ImageList = () => {
     const [file, setFile] = useState();
@@ -113,4 +114,4 @@ const ImageList = () => {
         </LayoutAdmin>
     );
 };
-export default ImageList;
+export default withAuth(ImageList);
