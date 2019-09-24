@@ -13,7 +13,6 @@ import withAuth from "../../../components/withAuth";
 
 const AddPost = (props) => {
     const router = useRouter()
-    console.log(router.query.id)
     let formData = {
         values: {
             heading: "",
@@ -56,7 +55,6 @@ const AddPost = (props) => {
     const [date, setDate] = useState(new Date());
 
     const save = () => {
-        console.log(router.query.id)
         if (formValid && (date !== null || date !== undefined) && (editorState.getCurrentContent().hasText())) {
             spinnerService.showLoading(true);
             let data = inputs.values;
