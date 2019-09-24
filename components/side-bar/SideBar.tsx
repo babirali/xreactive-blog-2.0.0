@@ -1,5 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
-import "./SideBar.css";
+
 import axios from "axios";
 import { spinnerService } from "../../services/spinner";
 import Link from 'next/link'

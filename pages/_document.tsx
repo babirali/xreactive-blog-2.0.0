@@ -1,7 +1,5 @@
 import Document, { Head, Main, NextScript } from "next/document";
 
-// import 'bootstrap/dist/css/bootstrap.min.css';
-
 export default class MyDocument extends Document {
     render() {
         return (
@@ -31,7 +29,7 @@ export default class MyDocument extends Document {
                     <link href="https://fonts.googleapis.com/css?family=Patua+One&display=swap" rel="stylesheet" />
                     <link href="https://fonts.googleapis.com/css?family=Teko&display=swap" rel="stylesheet" />
                     <link rel="stylesheet" href="/static/css/style.css" />
-                    
+
                 </Head>
                 <body>
                     <Main />

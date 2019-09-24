@@ -1,8 +1,15 @@
 import React from "react";
+import Head from "next/head";
+
 import Layout from "../components/layout";
+
 const About = (props) => {
     return (
         <Layout>
+            <Head>
+                <title>XReactive-Tutorials on JavaScript, React, Angular and more</title>
+                <meta name="description" content="Tutorials on JavaScript, React, Angular and more" />
+            </Head>
             <h3 className="head-a">About</h3>
             {/* <h5 className="mt-4 mb-4 head-a">I’m a fullstack developer from Pakistan.</h5> */}
             <p className="text-a">

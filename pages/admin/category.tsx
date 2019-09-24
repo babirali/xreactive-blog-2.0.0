@@ -7,6 +7,7 @@ import LayoutAdmin from "../../components/layout-admin";
 
 const Category = () => {
     const [categories, setCategories] = useState([]);
+    console.log("rendered")
 
     useEffect(() => {
         getCategory();

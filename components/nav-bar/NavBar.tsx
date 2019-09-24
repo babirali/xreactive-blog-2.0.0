@@ -1,5 +1,5 @@
 import React from "react";
-import "./NavBar.css";
+
 import Link from 'next/link'
 import { Navbar, Nav } from 'react-bootstrap';
 const NavBar = () => {

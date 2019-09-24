@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
 import ReactTable from "react-table";
-import "react-table/react-table.css";
 import { ToastContainer, toast } from "react-toastify";
 import { confirmAlert } from "react-confirm-alert";
-import "react-confirm-alert/src/react-confirm-alert.css";
 import Link from 'next/link'
+
 import { spinnerService } from "../../services/spinner";
 import LayoutAdmin from "../../components/layout-admin";
 
@@ -29,13 +28,7 @@ class ListPost extends Component<any, any> {
                         axios.get(process.env.API_ENDPOINT + "api/posts/delete/" + id).then((response: any) => {
                             spinnerService.showLoading(true);
                             toast.success("Deleted Successfully");
-                            axios.get(process.env.API_ENDPOINT + "api/posts")
-                                .then((res: any) => {
-                                    this.setState({
-                                        post: res.data,
-                                    });
-                                    spinnerService.showLoading(false);
-                                });
+
                         }).catch((error: any) => {
                             // console.log(error);
                             spinnerService.showLoading(false);
@@ -90,9 +83,9 @@ class ListPost extends Component<any, any> {
                                 spinnerService.showLoading(true);
                                 axios.get(process.env.API_ENDPOINT + "api/posts")
                                     .then((res: any) => {
-                                        this.setState({
-                                            post: res.data,
-                                        });
+                                        // this.setState({
+                                        //     post: res.data,
+                                        // });
                                         spinnerService.showLoading(false);
                                     }).catch((error: any) => {
                                         spinnerService.showLoading(false);

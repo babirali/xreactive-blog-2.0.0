@@ -1,6 +1,9 @@
-import { Component } from "react";
 import NavBar from "./nav-bar/NavBar";
 import SideBar from "./side-bar/SideBar";
+
+import '../components/nav-bar/NavBar.css'
+import "../components/post/post.css"
+import "../components/side-bar/SideBar.css"
 
 const Layout = (props) => {
     return (

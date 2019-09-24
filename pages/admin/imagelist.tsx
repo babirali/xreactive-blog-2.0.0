@@ -5,7 +5,7 @@ import { spinnerService } from "../../services/spinner";
 import LayoutAdmin from "../../components/layout-admin";
 
 const ImageList = () => {
-    const [file, setFile] = useState(new File([""], ""));
+    const [file, setFile] = useState();
     const [images, setImages] = useState([]);
     const [disable, setDisable] = useState(true);
 
@@ -92,7 +92,7 @@ const ImageList = () => {
             {
                 images.map((img, i) => {
                     return (
-                        <div className="image-p m-1">
+                        <div key={i} className="image-p m-1">
                             <img key={i} src={`https://xreactive.blob.core.windows.net/prod/` + img.name} />
                             <div className="hd">
                                 <div className="copy-text">

@@ -7,6 +7,9 @@ import Head from "next/head";
 
 const PostByCategory = (props) => {
     const [posts, setPost] = useState(props.posts);
+    useEffect(() => {
+        setPost(props.posts)
+    }, [props])
     return (
         <div>
             <Head>

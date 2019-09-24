@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import { EditorState, convertToRaw, convertFromRaw } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import { spinnerService } from "../../services/spinner";
-import useForm from "../../components/form/useForm";
-import LayoutAdmin from "../../components/layout-admin";
+import { useRouter } from "next/router";
+
+import { spinnerService } from "../../../services/spinner";
+import useForm from "../../../components/form/useForm";
+import LayoutAdmin from "../../../components/layout-admin";
 
 const AddPost = (props) => {
+    const router = useRouter()
+    console.log(router.query.id)
     let formData = {
         values: {
             heading: "",
@@ -54,6 +55,7 @@ const AddPost = (props) => {
     const [date, setDate] = useState(new Date());
 
     const save = () => {
+        console.log(router.query.id)
         if (formValid && (date !== null || date !== undefined) && (editorState.getCurrentContent().hasText())) {
             spinnerService.showLoading(true);
             let data = inputs.values;
@@ -62,11 +64,11 @@ const AddPost = (props) => {
                 content: JSON.stringify(convertToRaw(editorState.getCurrentContent())),
                 date
             };
-            if (props.match.params.id === undefined) {
+            if (router.query.id === "0") {
                 axios.post(process.env.API_ENDPOINT + "api/posts/save", data).then((response: any) => {
                     toast.success("Saved Successfully");
                     spinnerService.showLoading(false);
-                    props.history.push("/listpost");
+                    // props.history.push("/listpost");
                 }).catch((error: any) => {
                     toast.error("Error");
                     // console.log(error);
@@ -75,7 +77,7 @@ const AddPost = (props) => {
                 axios.post(process.env.API_ENDPOINT + "api/posts/update", data).then((response: any) => {
                     toast.success("Updated Successfully");
                     spinnerService.showLoading(false);
-                    props.history.push("/listpost");
+                    // props.history.push("/listpost");
                 }).catch((error: any) => {
                     toast.error("Error");
                     // console.log(error);
@@ -101,17 +103,17 @@ const AddPost = (props) => {
     };
     useEffect(() => {
         getCategories();
-        // if (props.match.params.id) {
-        //     axios.get(process.env.API_ENDPOINT + "api/posts/get/" + props.match.params.id).then((response: any) => {
-        //         spinnerService.showLoading(false);
-        //         // this.setState({ post: response.data });
-        //         setValues(response.data);
-        //         setDate(new Date(response.data.date));
-        //         setEditorState(EditorState.createWithContent(convertFromRaw(JSON.parse(response.data.content))));
-        //     }).catch((error: any) => {
-        //         // console.log(error);
-        //     });
-        // }
+        if (router.query.id !== "0" && router.query.id !== undefined) {
+            axios.get(process.env.API_ENDPOINT + "api/posts/get/" + router.query.id).then((response: any) => {
+                spinnerService.showLoading(false);
+                // this.setState({ post: response.data });
+                setValues(response.data);
+                setDate(new Date(response.data.date));
+                setEditorState(EditorState.createWithContent(convertFromRaw(JSON.parse(response.data.content))));
+            }).catch((error: any) => {
+                // console.log(error);
+            });
+        }
 
     }, []);
     return (
@@ -192,7 +194,7 @@ const AddPost = (props) => {
                     <div className="col-md-12 pb-5">
                         <div className="pull-right pt-4">
                             <button type="submit" className="btn btn-primary mr-2">Save</button>
-                            <button type="button" className="btn btn-primary mr-2" onClick={() => alert("implementation pending")}>Publish</button>
+                            <button type="button" className="btn btn-primary mr-2" onClick={() => save()}>Publish</button>
                             <button type="button" className="btn btn-primary mr-2" onClick={clear}>Clear</button>
                         </div>
                     </div>

@@ -4,6 +4,7 @@ const withBundleAnalyzer = require("@zeit/next-bundle-analyzer");
 require("dotenv").config();
 
 module.exports = withCSS(withBundleAnalyzer({
+    distDir: 'build',
     webpack: config => {
         // Fixes npm packages that depend on `fs` module
         config.node = {

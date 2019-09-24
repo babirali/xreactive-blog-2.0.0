@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import "./post.css"
 
 const Post = (props) => {
     return (
