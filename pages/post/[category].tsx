@@ -4,6 +4,7 @@ import axios from "axios";
 import Post from "../../components/post/post";
 import Layout from "../../components/layout";
 import Head from "next/head";
+import Pagination from "../../components/pagination/Pagination";
 
 const PostByCategory = (props) => {
     const [posts, setPost] = useState(props.posts);
@@ -22,6 +23,7 @@ const PostByCategory = (props) => {
                         return <Post post={post} key={index} />;
                     })
                 }
+                <Pagination />
             </Layout>
         </div>
     );

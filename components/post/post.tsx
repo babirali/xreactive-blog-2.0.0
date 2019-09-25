@@ -12,10 +12,12 @@ const Post = (props) => {
                 <Link href="/post/[category]/[id]/[heading]" as={`/post/${props.post.category}/${props.post._id}/${props.post.heading.split(" ").join("-")}`}>
                     <a><h1 className="card-title mb-1 heading-list-post">{props.post.heading}</h1></a>
                 </Link>
-                < p className="card-text text-hidden"> {props.post.homePageText}</p>
                 <Link href="/post/[category]/[id]/[heading]" as={`/post/${props.post.category}/${props.post._id}/${props.post.heading.split(" ").join("-")}`}>
-                    <a>Read More <span className="pl-1">⟶</span></a>
+                    <a><p className="card-text text-hidden"> {props.post.homePageText}</p></a>
                 </Link>
+                {/* <Link href="/post/[category]/[id]/[heading]" as={`/post/${props.post.category}/${props.post._id}/${props.post.heading.split(" ").join("-")}`}>
+                    <a>Read More <span className="pl-1">⟶</span></a>
+                </Link> */}
             </div>
         </div >
     );

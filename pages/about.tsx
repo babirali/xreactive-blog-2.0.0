@@ -17,6 +17,9 @@ const About = (props) => {
                 It's my passion to convert real world logic into code, which thurst me to write elegant and proficient structural code.
             </p>
             <p className="text-a">
+                I develop applications in Angular, React, ASP.Net, Express.js, Azure Core, Amazon AWS, Dockers, MongoDB and SQL Server technologies
+            </p>
+            {/* <p className="text-a">
                 I develop applications in following technologies
                 <ul>
                     <li>Angular</li>
@@ -29,7 +32,7 @@ const About = (props) => {
                     <li>MongoDB</li>
                     <li>SQL Server</li>
                 </ul>
-            </p>
+            </p> */}
             <p className="text-a">you can find me on twitter <a href="https://twitter.com/babirali001" target="_blank">@babirali001</a></p>
             <br />
             <p className="text-a">The source code of this blog is open source you can find it on GitHub and start bloging <a href="https://github.com/babirali/xreactive-blog" target="_blank">Code</a>.</p>

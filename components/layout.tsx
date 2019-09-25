@@ -1,10 +1,11 @@
 import NavBar from "./nav-bar/NavBar";
 import SideBar from "./side-bar/SideBar";
+import Footer from "./footer/Footer";
 
 import '../components/nav-bar/NavBar.css'
 import "../components/post/post.css"
 import "../components/side-bar/SideBar.css"
-import Footer from "./footer/Footer";
+import '../components/pagination/Pagination.css'
 
 const Layout = (props) => {
     return (

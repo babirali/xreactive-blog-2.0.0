@@ -12,6 +12,7 @@ import Head from 'next/head'
 
 const PostDetail = (props) => {
     const [post, setPost] = useState(props.post);
+    const [date, setDate] = useState(new Date(props.post.date).toLocaleDateString("en-US"));
     const [editorState, setEditorState] = useState(EditorState.createWithContent(convertFromRaw(JSON.parse(props.post.content))));
     return (
         <div>
@@ -21,11 +22,11 @@ const PostDetail = (props) => {
             </Head>
             <Layout>
                 <h1 className="h-text mt-4">{post.heading}</h1>
-                {/* <b>Posted on {moment(this.state.post.date).format("MM/DD/YYYY")} - {this.state.post.min} Mins Read</b> */}
-                <b>Posted on {post.date} - {post.min} Mins Read</b>
-                <p className="lead">
-                    By <a href="https://twitter.com/babirali001" target="_blank"> {post.postBy}</a>
-                </p>
+                <b className="post-info">
+                    <span className="font-italic">
+                        <i className="fa fa-user" />
+                        <a href="https://twitter.com/babirali001" target="_blank"> {post.postBy}</a>
+                    </span><span className="font-weight-bolder"> | </span><i className="fa fa-calendar" /> {date}<span className="font-weight-bolder"> | </span><i className="fa fa-clock-o" /> {post.min} Mins Read</b>
                 <img className="img-fluid rounded" src={post.mainImg} alt="" />
                 <Editor
                     editorState={editorState}

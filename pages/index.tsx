@@ -5,6 +5,7 @@ import Post from '../components/post/post';
 import axios from "axios";
 import Layout from '../components/layout';
 import Head from 'next/head';
+import Pagination from '../components/pagination/Pagination';
 
 const Home = (props) => {
   const [posts, setPosts] = useState(props.posts)
@@ -19,7 +20,7 @@ const Home = (props) => {
           return <Post post={post} key={index} />;
         }
         )}
-        {/* <Pagination /> */}
+        <Pagination />
       </Layout>
     </div>
   )
