@@ -1,34 +1,42 @@
 .padding-0 {
-    padding: 0;
+  padding: 0;
 }
 
 .link:hover {
-    color: #50a1ff;
-    text-decoration: none;
-    outline: none;
+  color: #50a1ff;
+  text-decoration: none;
+  outline: none;
 }
 
 .link {
-    color: #50a1ff;
+  color: #50a1ff;
 }
 
 .text-hidden {
-    height: 52px;
-    text-align: justify;
+  height: 52px;
+  text-align: justify;
 }
 
 .card-text {
-    color: #757575;
-    font-size: 15px;
-    overflow-y: hidden
+  color: #757575;
+  font-size: 15px;
+  overflow-y: hidden;
 }
 
 .card-title {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .img-l {
-    width: 200px;
-    height: 200px;
-    cursor: pointer;
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
+}
+
+a > h1 {
+  color: #343a40;
+}
+
+a:hover {
+    text-decoration: none;
 }

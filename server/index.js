@@ -8,35 +8,41 @@ const session = require('express-session');
 const mongoose = require('mongoose');
 require('dotenv').config()
 
+const next = require('next')
+
+const dev = true;//process.env.NODE_DEV !== 'production' //true false
+const nextApp = next({ dev })
+const handle = nextApp.getRequestHandler() //part of next config
+
+const port = process.env.PORT;
+
 //Configure Mongoose
 if (process.env.PORT == 3022) {
     console.log("dev server running")
-    mongoose.connect(process.env.MONGODB, { useNewUrlParser: true });
+    mongoose.connect(process.env.MONGODB, { useNewUrlParser: true, useUnifiedTopology: true });
     mongoose.set('debug', true);
 } else {
     mongoose.connect(process.env.MONGODB_PROD, { useNewUrlParser: true });
 }
 
-const app = express();
+nextApp.prepare().then(() => {
 
-app.use(cors())
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, './build'))); // Point static path to build
-app.use(session({ secret: 'passport-tutorial', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false }));
+    const app = express()
+    app.use(cors())
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: false }));
+    app.use(express.static(path.join(__dirname, './build'))); // Point static path to build
+    app.use(session({ secret: 'passport-tutorial', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false }));
 
-require('./models');
-require('./config/passport');
-app.use(require('./routes'));
+    require('./models');
+    require('./config/passport');
+    app.use(require('./routes'));
 
-// Catch all other routes and return the index file
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './build/index.html'));
-});
-
-const port = process.env.PORT;
-app.set('port', port);
-
-const server = http.createServer(app);
-
-server.listen(port, () => console.log(`API running on localhost:${port}`));
+    app.get('*', (req, res) => {
+        return handle(req, res) // for all the react stuff
+    })
+    app.listen(port, err => {
+        if (err) throw err;
+        console.log(`ready at http://localhost:${port}`)
+    })
+})

@@ -1,7 +1,7 @@
 const express = require('express')
 const next = require('next')
 const PORT = process.env.PORT || 3000
-const dev = true;//process.env.NODE_DEV !== 'production' //true false
+const dev = false;//process.env.NODE_DEV !== 'production' //true false
 const nextApp = next({ dev })
 const handle = nextApp.getRequestHandler() //part of next config
 
