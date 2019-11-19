@@ -6,23 +6,23 @@ const bodyParser = require('body-parser');
 const cors = require('cors')
 const session = require('express-session');
 const mongoose = require('mongoose');
-require('dotenv').config()
+require('dotenv').config();
 
-const next = require('next')
-
-const dev = true;//process.env.NODE_DEV !== 'production' //true false
-const nextApp = next({ dev })
-const handle = nextApp.getRequestHandler() //part of next config
+const next = require('next');
+const dev = process.env.PORT !== '80' ? true : false;
+const nextApp = next({ dev });
+const handle = nextApp.getRequestHandler(); //part of next config
 
 const port = process.env.PORT;
-
+console.log(port);
+console.log(dev);
 //Configure Mongoose
-if (process.env.PORT == 3022) {
+if (port == "3022") {
     console.log("dev server running")
     mongoose.connect(process.env.MONGODB, { useNewUrlParser: true, useUnifiedTopology: true });
     mongoose.set('debug', true);
 } else {
-    mongoose.connect(process.env.MONGODB_PROD, { useNewUrlParser: true });
+    mongoose.connect(process.env.MONGODB_PROD, { useNewUrlParser: true, useUnifiedTopology: true });
 }
 
 nextApp.prepare().then(() => {
