@@ -193,3 +193,7 @@ h1 {
     border: none !important;
   }
 }
+
+span.rdw-image-imagewrapper>img {
+  width: 100%;
+}

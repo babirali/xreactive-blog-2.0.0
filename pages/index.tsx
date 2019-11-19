@@ -6,6 +6,7 @@ import axios from "axios";
 import Layout from '../components/layout';
 import Head from 'next/head';
 import Pagination from '../components/pagination/Pagination';
+import server from '../config';
 
 const Home = (props) => {
   const [posts, setPosts] = useState(props.posts)
@@ -27,7 +28,8 @@ const Home = (props) => {
 }
 
 Home.getInitialProps = async ({ req }) => {
-  const res = await axios.get(process.env.API_ENDPOINT + "api/posts");
+  console.log(server)
+  const res = await axios.get(server + "api/posts");
   return { posts: res.data }
 }
 

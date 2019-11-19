@@ -6,7 +6,10 @@
     "dev": "next dev --port=3023",
     "build": "next build",
     "start": "next start",
-    "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
+    "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",
+    "server:dev": "cross-env PORT=3022 node server/index.js",
+    "server:qa": "cross-env PORT=8080 node server/index.js",
+    "server": "cross-env PORT=80 node server/index.js"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
