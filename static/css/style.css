@@ -57,7 +57,7 @@ h1 {
   z-index: 1005;
 }
 
-.loading-overlay-show>i {
+.loading-overlay-show > i {
   margin: auto 0;
   color: white;
   font-size: 60px;
@@ -186,7 +186,7 @@ h1 {
 
 @media screen and (max-width: 600px) {
   .flex-row {
-    flex-direction: column!important;
+    flex-direction: column !important;
     align-items: center;
   }
   .img-l {
@@ -194,6 +194,6 @@ h1 {
   }
 }
 
-span.rdw-image-imagewrapper>img {
-  width: 100%;
+span.rdw-image-imagewrapper > img {
+  width: 100% !important;
 }

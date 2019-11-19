@@ -30,6 +30,23 @@ export default class MyDocument extends Document {
                     <link href="https://fonts.googleapis.com/css?family=Teko&display=swap" rel="stylesheet" />
                     <link rel="stylesheet" href="/static/css/style.css" />
 
+                    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146426125-1"></script>
+                    <script dangerouslySetInnerHTML={{
+                        __html: ` window.dataLayer = window.dataLayer || [];
+                        function gtag() { dataLayer.push(arguments); }
+                        gtag('js', new Date());
+                        gtag('config', 'UA-146426125-1');`,
+                    }}>
+                    </script>
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <script dangerouslySetInnerHTML={{
+                        __html: `(adsbygoogle = window.adsbygoogle || []).push({
+                            google_ad_client: "ca-pub-5691121281888708",
+                            enable_page_level_ads: true
+                        });`,
+                    }}>
+                    </script>
+
                 </Head>
                 <body>
                     <Main />
