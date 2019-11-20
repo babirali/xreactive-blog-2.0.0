@@ -5,12 +5,13 @@ import Post from "../../components/post/post";
 import Layout from "../../components/layout";
 import Head from "next/head";
 import Pagination from "../../components/pagination/Pagination";
+import server from "../../config";
 
 const PostByCategory = (props) => {
     const [posts, setPost] = useState(props.posts);
     useEffect(() => {
-        setPost(props.posts)
-    }, [props])
+        setPost(props.posts);
+    }, [props]);
     return (
         <div>
             <Head>
@@ -30,8 +31,8 @@ const PostByCategory = (props) => {
 };
 
 PostByCategory.getInitialProps = async ({ req, query }) => {
-    const res = await axios.get(process.env.API_ENDPOINT + "api/posts/getpostbycategory/" + query.category);
-    return { posts: res.data }
-}
+    const res = await axios.get(server + "api/posts/getpostbycategory/" + query.category);
+    return { posts: res.data };
+};
 
 export default PostByCategory;

@@ -2,13 +2,14 @@ import React, { Component, useState, useEffect } from "react";
 
 import axios from "axios";
 import { spinnerService } from "../../services/spinner";
-import Link from 'next/link'
+import Link from "next/link";
+import server from "../../config";
 
 const SideBar = () => {
     const [categories, setCategories] = useState([]);
     const getCategories = () => {
         spinnerService.showLoading(true);
-        axios.get(process.env.API_ENDPOINT + "api/category").then((response: any) => {
+        axios.get(server + "api/category").then((response: any) => {
             setCategories(response.data);
             spinnerService.showLoading(false);
         }).catch((error: any) => {

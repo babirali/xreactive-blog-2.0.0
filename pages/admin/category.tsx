@@ -5,10 +5,10 @@ import { spinnerService } from "../../services/spinner";
 import useForm from "../../components/form/useForm";
 import LayoutAdmin from "../../components/layout-admin";
 import withAuth from "../../components/withAuth";
+import server from "../../config";
 
 const Category = () => {
     const [categories, setCategories] = useState([]);
-    console.log("rendered")
 
     useEffect(() => {
         getCategory();
@@ -27,7 +27,7 @@ const Category = () => {
         if (formValid) {
             spinnerService.showLoading(true);
             const data = inputs.values;
-            axios.post(process.env.API_ENDPOINT + "api/category/save", data).then((response: any) => {
+            axios.post(server + "api/category/save", data).then((response: any) => {
                 toast.success("Saved Successfully");
                 getCategory();
                 spinnerService.showLoading(false);
@@ -43,7 +43,7 @@ const Category = () => {
     const { inputs, handleChange, handleSubmit, clearForm, formValid, isDirty } = useForm(save, formData);
     const getCategory = () => {
         spinnerService.showLoading(true);
-        axios.get(process.env.API_ENDPOINT + "api/category").then((response: any) => {
+        axios.get(server + "api/category").then((response: any) => {
             setCategories(response.data);
             spinnerService.showLoading(false);
         }).catch((error: any) => {
@@ -53,7 +53,7 @@ const Category = () => {
 
     const deleteCategory = (id) => {
         spinnerService.showLoading(true);
-        axios.get(process.env.API_ENDPOINT + "api/category/delete/" + id).then((response: any) => {
+        axios.get(server + "api/category/delete/" + id).then((response: any) => {
             getCategory();
             spinnerService.showLoading(false);
         }).catch((error: any) => {

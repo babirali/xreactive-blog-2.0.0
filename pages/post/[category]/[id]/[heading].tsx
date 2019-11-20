@@ -9,6 +9,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Layout from "../../../../components/layout";
 // import { spinnerService } from "../../../services/spinner";
 import Head from 'next/head'
+import server from "../../../../config";
 
 const PostDetail = (props) => {
     const [post, setPost] = useState(props.post);
@@ -38,11 +39,11 @@ const PostDetail = (props) => {
             </Layout>
         </div>
     );
-}
+};
 
 PostDetail.getInitialProps = async ({ req, query }) => {
-    const res = await axios.get(process.env.API_ENDPOINT + "api/posts/get/" + query.id);
-    return { post: res.data }
-}
+    const res = await axios.get(server + "api/posts/get/" + query.id);
+    return { post: res.data };
+};
 
 export default PostDetail;

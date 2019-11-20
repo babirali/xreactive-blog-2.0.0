@@ -28,7 +28,6 @@ const Home = (props) => {
 }
 
 Home.getInitialProps = async ({ req }) => {
-  console.log(server)
   const res = await axios.get(server + "api/posts");
   return { posts: res.data }
 }

@@ -1,4 +1,3 @@
-// Get dependencies
 const express = require('express');
 const path = require('path');
 const http = require('http');
@@ -14,8 +13,6 @@ const nextApp = next({ dev });
 const handle = nextApp.getRequestHandler(); //part of next config
 
 const port = process.env.PORT;
-console.log(port);
-console.log(dev);
 //Configure Mongoose
 if (port == "3022") {
     console.log("dev server running")

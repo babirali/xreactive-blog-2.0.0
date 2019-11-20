@@ -10,6 +10,7 @@ import { spinnerService } from "../../../services/spinner";
 import useForm from "../../../components/form/useForm";
 import LayoutAdmin from "../../../components/layout-admin";
 import withAuth from "../../../components/withAuth";
+import server from "../../../config";
 
 const AddPost = (props) => {
     const router = useRouter()
@@ -64,7 +65,7 @@ const AddPost = (props) => {
                 date
             };
             if (router.query.id === "0") {
-                axios.post(process.env.API_ENDPOINT + "api/posts/save", data).then((response: any) => {
+                axios.post(server + "api/posts/save", data).then((response: any) => {
                     toast.success("Saved Successfully");
                     spinnerService.showLoading(false);
                     // props.history.push("/listpost");
@@ -73,7 +74,7 @@ const AddPost = (props) => {
                     // console.log(error);
                 });
             } else {
-                axios.post(process.env.API_ENDPOINT + "api/posts/update", data).then((response: any) => {
+                axios.post(server + "api/posts/update", data).then((response: any) => {
                     toast.success("Updated Successfully");
                     spinnerService.showLoading(false);
                     // props.history.push("/listpost");
@@ -93,7 +94,7 @@ const AddPost = (props) => {
     const [categories, setCategories] = useState([]);
     const getCategories = () => {
         spinnerService.showLoading(true);
-        axios.get(process.env.API_ENDPOINT + "api/category").then((response: any) => {
+        axios.get(server + "api/category").then((response: any) => {
             setCategories(response.data);
             spinnerService.showLoading(false);
         }).catch((error: any) => {
@@ -103,7 +104,7 @@ const AddPost = (props) => {
     useEffect(() => {
         getCategories();
         if (router.query.id !== "0" && router.query.id !== undefined) {
-            axios.get(process.env.API_ENDPOINT + "api/posts/get/" + router.query.id).then((response: any) => {
+            axios.get(server + "api/posts/get/" + router.query.id).then((response: any) => {
                 spinnerService.showLoading(false);
                 // this.setState({ post: response.data });
                 setValues(response.data);

@@ -4,6 +4,7 @@ import axios from "axios";
 import { spinnerService } from "../../services/spinner";
 import LayoutAdmin from "../../components/layout-admin";
 import withAuth from "../../components/withAuth";
+import server from "../../config";
 
 const ImageList = () => {
     const [file, setFile] = useState();
@@ -32,7 +33,7 @@ const ImageList = () => {
 
     const loadImages = () => {
         spinnerService.showLoading(true);
-        axios.get(process.env.API_ENDPOINT + "api/upload/getall").then((response: any) => {
+        axios.get(server + "api/upload/getall").then((response: any) => {
             setImages(response.data);
             spinnerService.showLoading(false);
         }).catch((error: any) => {
@@ -45,7 +46,7 @@ const ImageList = () => {
         spinnerService.showLoading(true);
         const data = new FormData();
         data.append("image", file);
-        axios.post(process.env.API_ENDPOINT + "api/upload", data).then((response: any) => {
+        axios.post(server + "api/upload", data).then((response: any) => {
             toast.success("Saved Successfully");
             loadImages();
             spinnerService.showLoading(false);
@@ -60,7 +61,7 @@ const ImageList = () => {
         const data = {
             name: name.replace("thumbnails", "")
         };
-        axios.post(process.env.API_ENDPOINT + "api/upload/delete", data).then((response: any) => {
+        axios.post(server + "api/upload/delete", data).then((response: any) => {
             loadImages();
             spinnerService.showLoading(false);
         }).catch((error: any) => {

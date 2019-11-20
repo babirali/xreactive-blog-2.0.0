@@ -3,23 +3,24 @@ import axios from "axios";
 import ReactTable from "react-table";
 import { ToastContainer, toast } from "react-toastify";
 import { confirmAlert } from "react-confirm-alert";
-import Link from 'next/link'
+import Link from "next/link";
 
 import { spinnerService } from "../../services/spinner";
 import LayoutAdmin from "../../components/layout-admin";
 import withAuth from "../../components/withAuth";
+import server from "../../config";
 
 const ListPost = (props) => {
-    const [state, setState] = useState()
+    const [state, setState] = useState();
     useEffect(() => {
-        axios.get(process.env.API_ENDPOINT + "api/posts")
+        axios.get(server + "api/posts")
             .then((res: any) => {
                 setState(res.data);
                 spinnerService.showLoading(false);
             }).catch((error: any) => {
                 spinnerService.showLoading(false);
             });
-    }, [])
+    }, []);
 
     const del = (id: any) => {
         confirmAlert({
@@ -31,10 +32,10 @@ const ListPost = (props) => {
                 {
                     label: "Yes",
                     onClick: () => {
-                        axios.get(process.env.API_ENDPOINT + "api/posts/delete/" + id).then((response: any) => {
+                        axios.get(server + "api/posts/delete/" + id).then((response: any) => {
                             spinnerService.showLoading(true);
                             toast.success("Deleted Successfully");
-                            axios.get(process.env.API_ENDPOINT + "api/posts")
+                            axios.get(server + "api/posts")
                                 .then((res: any) => {
                                     setState(res.data);
                                     spinnerService.showLoading(false);
@@ -95,6 +96,6 @@ const ListPost = (props) => {
             </div>
         </LayoutAdmin>
     );
-}
+};
 
 export default withAuth(ListPost);
