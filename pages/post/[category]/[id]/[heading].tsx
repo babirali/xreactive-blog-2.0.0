@@ -8,7 +8,7 @@ import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import Layout from "../../../../components/layout";
 // import { spinnerService } from "../../../services/spinner";
-import Head from 'next/head'
+import Head from "next/head";
 import server from "../../../../config";
 
 const PostDetail = (props) => {

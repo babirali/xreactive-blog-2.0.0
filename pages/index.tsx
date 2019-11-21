@@ -1,15 +1,15 @@
-import { useState } from 'react'
+import { useState } from "react";
 // import 'bootstrap/dist/css/bootstrap.min.css';
-import Post from '../components/post/post';
+import Post from "../components/post/post";
 // import { spinnerService } from '../services/spinner';
 import axios from "axios";
-import Layout from '../components/layout';
-import Head from 'next/head';
-import Pagination from '../components/pagination/Pagination';
-import server from '../config';
+import Layout from "../components/layout";
+import Head from "next/head";
+import Pagination from "../components/pagination/Pagination";
+import server from "../config";
 
 const Home = (props) => {
-  const [posts, setPosts] = useState(props.posts)
+  const [posts, setPosts] = useState(props.posts);
   return (
     <div>
       <Head>
@@ -24,12 +24,12 @@ const Home = (props) => {
         <Pagination />
       </Layout>
     </div>
-  )
-}
+  );
+};
 
 Home.getInitialProps = async ({ req }) => {
-  const res = await axios.get(server + "api/posts");
-  return { posts: res.data }
-}
+  const res = await axios.get(server + "api/posts/page/" + 1);
+  return { posts: res.data };
+};
 
-export default Home
+export default Home;

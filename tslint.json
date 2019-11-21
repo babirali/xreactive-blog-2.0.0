@@ -5,6 +5,7 @@
     ],
     "jsRules": {},
     "rules": {
+        "triple-equals": false,
         "ordered-imports": [
             true,
             {
