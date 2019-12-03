@@ -13,8 +13,8 @@ import withAuth from "../../../components/withAuth";
 import server from "../../../config";
 
 const AddPost = (props) => {
-    const router = useRouter()
-    let formData = {
+    const router = useRouter();
+    const formData = {
         values: {
             heading: "",
             img: "",
@@ -23,7 +23,8 @@ const AddPost = (props) => {
             tags: "",
             min: "",
             homePageText: "",
-            category: ""
+            category: "",
+            keywordsMeta: ""
         },
         validations: {
             heading: {
@@ -38,9 +39,6 @@ const AddPost = (props) => {
             postBy: {
                 required: { flag: true, message: "Post by is required" }
             },
-            tags: {
-                required: { flag: true, message: "tags is required" }
-            },
             min: {
                 required: { flag: true, message: "Minuts Read is required" }
             },
@@ -49,6 +47,12 @@ const AddPost = (props) => {
             },
             category: {
                 required: { flag: true, message: "Home Page Text is required" }
+            },
+            tags: {
+                required: { flag: true, message: "tags is required" }
+            },
+            keywordsMeta: {
+                required: { flag: true, message: "Keywords is required" }
             }
         }
     };
@@ -154,12 +158,6 @@ const AddPost = (props) => {
                         <span className="text-danger">{inputs.errors ? inputs.errors.mainImg : ""}</span>
                     </div>
                     <div className="form-group col-md-6">
-                        <label htmlFor="tags">Tags</label>
-                        <input type="text" tabIndex={6} className="form-control"
-                            name="tags" value={inputs.values ? inputs.values.tags : ""} onChange={handleChange} id="tags" placeholder="Tags" required />
-                        <span className="text-danger">{inputs.errors ? inputs.errors.tags : ""}</span>
-                    </div>
-                    <div className="form-group col-md-6">
                         <label htmlFor="tags">Minuts Read</label>
                         <input type="text" tabIndex={7} className="form-control"
                             name="min" value={inputs.values ? inputs.values.min : ""} onChange={handleChange} id="min" placeholder="Minuts Read" required />
@@ -176,7 +174,19 @@ const AddPost = (props) => {
                         <span className="text-danger">{inputs.errors ? inputs.errors.category : ""}</span>
                     </div>
                     <div className="form-group col-md-6">
-                        <label htmlFor="tags">Home Page Text</label>
+                        <label htmlFor="tags">Description Meta</label>
+                        <input type="text" tabIndex={6} className="form-control"
+                            name="tags" value={inputs.values ? inputs.values.tags : ""} onChange={handleChange} id="tags" placeholder="Tags" required />
+                        <span className="text-danger">{inputs.errors ? inputs.errors.tags : ""}</span>
+                    </div>
+                    <div className="form-group col-md-6">
+                        <label htmlFor="keywordsMeta">Keywords Meta</label>
+                        <input type="text" tabIndex={6} className="form-control"
+                            name="keywordsMeta" value={inputs.values ? inputs.values.keywordsMeta : ""} onChange={handleChange} id="keywordsMeta" placeholder="Keywords Meta" required />
+                        <span className="text-danger">{inputs.errors ? inputs.errors.keywordsMeta : ""}</span>
+                    </div>
+                    <div className="form-group col-md-6">
+                        <label htmlFor="homePageText">Home Page Text</label>
                         <textarea tabIndex={9} className="form-control"
                             name="homePageText" value={inputs.values ? inputs.values.homePageText : ""} onChange={handleChange} id="homePageText" placeholder="Home Page Text" required />
                         <span className="text-danger">{inputs.errors ? inputs.errors.homePageText : ""}</span>

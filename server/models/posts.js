@@ -12,7 +12,8 @@ const PostsSchema = new Schema({
     tags: String,
     min: String,
     homePageText: String,
-    category: String
+    category: String,
+    keywordsMeta: String
 });
 
 mongoose.model('Posts', PostsSchema);

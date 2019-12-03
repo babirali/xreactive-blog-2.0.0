@@ -1,13 +1,17 @@
 import Document, { Head, Main, NextScript } from "next/document";
+import server from "../config";
 
 export default class MyDocument extends Document {
     render() {
         return (
-            <html>
+            <html lang="en-US">
                 <Head>
                     <meta charSet="utf-8" />
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
+                    <meta name="HandheldFriendly" content="True" />
+                    <meta name="MobileOptimized" content="320" />
+                    <meta name="viewport" content="width=device-width" />
 
                     <link rel="apple-touch-icon" sizes="57x57" href="/static/img/favicon-icons/apple-icon-57x57.png" />
                     <link rel="apple-touch-icon" sizes="60x60" href="/static/img/favicon-icons/apple-icon-60x60.png" />
@@ -24,6 +28,9 @@ export default class MyDocument extends Document {
                     <link rel="icon" type="image/png" sizes="16x16" href="/static/img/favicon-icons/favicon-16x16.png" />
                     <link rel="manifest" href="/static/img/favicon-icons/manifest.json" />
 
+                    <link rel="dns-prefetch" href="//stackpath.bootstrapcdn.com" />
+                    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
                     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossOrigin="anonymous" />
                     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossOrigin="anonymous" />
                     <link href="https://fonts.googleapis.com/css?family=Patua+One&display=swap" rel="stylesheet" />
@@ -31,22 +38,33 @@ export default class MyDocument extends Document {
                     <link rel="stylesheet" href="/static/css/style.css" />
 
                     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-146426125-1"></script>
-                    <script dangerouslySetInnerHTML={{
-                        __html: ` window.dataLayer = window.dataLayer || [];
+                    {
+                        server != "http://localhost:3022/" ?
+                            <script dangerouslySetInnerHTML={{
+                                __html: ` window.dataLayer = window.dataLayer || [];
                         function gtag() { dataLayer.push(arguments); }
                         gtag('js', new Date());
                         gtag('config', 'UA-146426125-1');`,
-                    }}>
-                    </script>
-                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                    <script dangerouslySetInnerHTML={{
-                        __html: `(adsbygoogle = window.adsbygoogle || []).push({
-                            google_ad_client: "ca-pub-5691121281888708",
-                            enable_page_level_ads: true
-                        });`,
-                    }}>
-                    </script>
-
+                            }}>
+                            </script>
+                            : ""
+                    }
+                    {
+                        server != "http://localhost:3022/" ?
+                            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            : ""
+                    }
+                    {
+                        server != "http://localhost:3022/" ?
+                            <script dangerouslySetInnerHTML={{
+                                __html: `(adsbygoogle = window.adsbygoogle || []).push({
+                                google_ad_client: "ca-pub-5691121281888708",
+                                enable_page_level_ads: true
+                            });`,
+                            }}>
+                            </script>
+                            : ""
+                    }
                 </Head>
                 <body>
                     <Main />

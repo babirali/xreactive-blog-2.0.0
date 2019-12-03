@@ -8,7 +8,7 @@ router.get('/', auth.optional, (req, res, next) => {
 });
 
 router.get('/page/:pageNumber', auth.optional, (req, res, next) => {
-    return Posts.find().sort({ date: -1 }).skip(10 * (req.params.pageNumber - 1)).limit(10).then((posts) => res.json(posts));
+    return Posts.find().sort({ date: -1 }).skip(5 * (req.params.pageNumber - 1)).limit(5).then((posts) => res.json(posts));
 });
 
 

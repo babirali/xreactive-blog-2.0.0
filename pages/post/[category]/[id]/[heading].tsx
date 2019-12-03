@@ -20,6 +20,15 @@ const PostDetail = (props) => {
             <Head>
                 <title>{post.heading}</title>
                 <meta name="description" content={post.tags} />
+                <meta name="keywords" content={post.keywordsMeta} />
+                <link rel="canonical" href={`http://xreactive.com/post/${post.category}/${post._id}/${post.heading.split(" ").join("-")}`} />
+                <meta name="author" content={post.postBy} />
+
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:description" content={post.tags} />
+                <meta name="twitter:title" content={post.heading} />
+                <meta name="twitter:image" content={post.mainImg} />
+                <meta name="twitter:creator" content="@babirali001" />
             </Head>
             <Layout>
                 <h1 className="h-text mt-4">{post.heading}</h1>
