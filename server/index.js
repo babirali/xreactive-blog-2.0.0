@@ -22,7 +22,7 @@ if (port == "3022") {
     mongoose.connect(process.env.MONGODB_PROD, { useNewUrlParser: true, useUnifiedTopology: true });
 }
 
-nextApp.prepare().then(() => {
+// nextApp.prepare().then(() => {
 
     const app = express()
     app.use(cors())
@@ -42,4 +42,4 @@ nextApp.prepare().then(() => {
         if (err) throw err;
         console.log(`ready at http://localhost:${port}`)
     })
-})
+// })
