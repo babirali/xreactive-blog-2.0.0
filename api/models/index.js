@@ -1,3 +1,3 @@
 require('./category');
-require('./users');
+require('./users'); 
 require('./posts');

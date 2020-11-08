@@ -4,6 +4,7 @@ const auth = require('../auth');
 const Posts = mongoose.model('Posts');
 
 router.get('/', auth.optional, (req, res, next) => {
+    console.log("test");
     return Posts.find().sort({ date: -1 }).then((posts) => res.json(posts));
 });
 

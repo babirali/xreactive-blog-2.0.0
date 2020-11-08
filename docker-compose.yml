@@ -1,0 +1,67 @@
+version: "3.8"
+services:
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: api-service
+    restart: unless-stopped
+    env_file: .env.dev
+    user: "root"
+    ports:
+      - "8081:80"
+    environment:
+      - PORT=$PORT
+      - MONGO_USERNAME=$MONGO_USERNAME
+      - MONGO_PASSWORD=$MONGO_PASSWORD
+      - MONGO_HOSTNAME=db
+      - MONGO_PORT=$MONGO_PORT
+      - MONGO_DB=$MONGO_DB
+    volumes:
+      - .:/home/node/app
+      - node_modules:/home/node/app/node_modules
+    networks:
+      - app-network
+    command: ./wait-for.sh db:27017 -- /home/node/app/node_modules/.bin/nodemon index.js
+
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: web-app
+    restart: unless-stopped
+    env_file: .env.dev
+    user: "root"
+    ports:
+      - "8082:80"
+    environment:
+      - API_ENDPOINT=$API_ENDPOINT
+    volumes:
+      - .:/home/node/app
+      - node_modules:/home/node/app/node_modules
+    networks:
+      - app-network
+    command: npm start
+    
+  db:
+    image: mongo:4.1.8-xenial
+    container_name: db
+    restart: unless-stopped
+    env_file: .env.dev
+    ports:
+      - "28018:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=$MONGO_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD=$MONGO_PASSWORD
+    volumes:
+      - dbdata:/data/db
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  dbdata:
+  node_modules:
