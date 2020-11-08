@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import Link from 'next/link'
-import { Navbar, Nav } from 'react-bootstrap';
+import Link from "next/link";
+import { Navbar, Nav } from "react-bootstrap";
 
 const NavBar = () => {
-    const [currentLink, setCurrentLink] = useState('/')
+    const [currentLink, setCurrentLink] = useState("/");
     useEffect(() => {
         setCurrentLink(window.location.pathname);
-    }, [])
+    }, []);
     return (
         <div className="container">
             <Navbar className="bg-color pt-4 pb-3" expand="lg">

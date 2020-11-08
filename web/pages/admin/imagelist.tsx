@@ -7,7 +7,7 @@ import withAuth from "../../components/withAuth";
 import server from "../../config";
 
 const ImageList = () => {
-    const [file, setFile] = useState();
+    const [file, setFile] = useState(new File([""], ""));
     const [images, setImages] = useState([]);
     const [disable, setDisable] = useState(true);
 
